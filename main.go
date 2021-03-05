@@ -44,25 +44,32 @@ type create struct {
 func setup() {
 	r := gin.Default()
 
+	// r.Static("/static", "/static/css")
+	r.LoadHTMLGlob("templates/*")
+
 	r.GET("/:urlID", func(c *gin.Context) {
 		urlID := c.Param("urlID")
-		c.JSON(http.StatusOK, gin.H{"urlID": urlID})
+		c.HTML(http.StatusOK, "redirect.tmpl", gin.H{"redirect_to": urlID})
+	})
+
+	r.GET("/", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "form.html", gin.H{})
 	})
 
 	r.POST("/create", func(c *gin.Context) {
 		var form create
 
 		if err := c.ShouldBind(&form); err != nil {
-			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			c.HTML(http.StatusBadRequest, "error.html", gin.H{"error": err.Error()})
 			return
 		}
 
 		if !isURL(form.URL) {
-			c.JSON(http.StatusNotAcceptable, gin.H{"error": "Incorrect url"})
+			c.HTML(http.StatusNotAcceptable, "error.html", gin.H{"error": "Incorrect url"})
 			return
 		}
 
-		c.JSON(http.StatusOK, gin.H{"url": form.URL})
+		c.HTML(http.StatusOK, "url.html", gin.H{"url": form.URL})
 	})
 
 	r.Run()
