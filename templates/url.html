@@ -1,3 +1,7 @@
+{{ template "header.html" .}}
+
 <h1>
-  Success! URL: {{ .url }}
+  Success! Short URL: {{ .url }}! <a href="/">Back</a>
 </h1>
+
+{{ template "footer.html" .}}

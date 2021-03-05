@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<head>
+  <title>Shorten your URL!</title>
+  <meta charset="utf-8">
+  <style>
+    * {
+      box-sizing: content-box;
+    }
+
+    html, body {
+      margin: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      background-color: #f39c12;
+    }
+
+    main {
+      width: calc(100vw - 20px);
+      height: calc(100vh - 20px);
+      background-color: white;
+      margin: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    input {
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid rgb(221, 221, 221);
+      width: 300px;
+      transition: 0.1s;
+      margin-right: 10px;
+    }
+
+    input:focus {
+      outline: none;
+      box-shadow: 0px 0px 0px 3px #f39c12;
+      border-color: #a76700;
+      transition: 0.1s;
+    }
+
+    button {
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      font-weight: bold;
+      transition: 0.1s;
+    }
+
+    button:hover {
+      cursor: pointer;
+      color: white;
+      background-color: #f39c12;
+      transition: 0.1s;
+    }
+  </style>
+</head>
+<body>
+  <main>

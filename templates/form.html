@@ -1,3 +1,8 @@
+{{ template "header.html" .}}
+
 <form action="/create" method="post" name="add_url">
-  <input type="text" placeholder="URL" name="url" />
+  <input type="text" placeholder="http://www.example.com" name="url" />
+  <button>Submit</button>
 </form>
+
+{{ template "footer.html" .}}
