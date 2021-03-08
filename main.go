@@ -1,12 +1,11 @@
 package main
 
 import (
-	"database/sql"
-	"fmt"
 	"net/http"
 	"net/url"
-	"os"
 	"strings"
+
+	"./db"
 
 	"github.com/gin-gonic/gin"
 	_ "github.com/lib/pq"
@@ -97,28 +96,8 @@ func isURL(urlString string) bool {
 	return err == nil && u.Host != "" && u.Scheme != ""
 }
 
-func connectDB(credentials string) {
-	db, err := sql.Open("postgres", credentials)
-
-	if err != nil {
-		fmt.Println(err.Error())
-	}
-
-	defer db.Close()
-
-	err = db.Ping()
-
-	if err != nil {
-		fmt.Println(err.Error())
-	} else {
-		fmt.Println("Connected to DB")
-	}
-	// someModel := models.Key{ID: 1, URL: "ussd"}
-}
-
 func main() {
-	credentials := fmt.Sprintf("user=%s password=%s dbname=%s sslmode=disable", os.Getenv("DB_USER"), os.Getenv("DB_PASS"), os.Getenv("DB_NAME"))
-	connectDB(credentials)
+	db.Init()
 
 	setup()
 }
