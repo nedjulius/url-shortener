@@ -1,11 +1,9 @@
 <head>
   <script>
     let redirectUrl = {{ .redirect_to }}
-    let test = "http://www.google.com"
     
     const redirect = () => {
-      console.log(redirectUrl)
-      window.location.replace(test)
+      window.location.replace(redirectUrl)
     }
 
     window.addEventListener('DOMContentLoaded', redirect, false)

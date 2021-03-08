@@ -1,6 +1,8 @@
 package models
 
-import "main/db"
+import (
+	"main/db"
+)
 
 // Link ...
 type Link struct {
@@ -13,7 +15,7 @@ type LinkModel struct{}
 
 // Create ...
 func (m LinkModel) Create(url string) (link Link, err error) {
-	err = db.GetDB().QueryRow("INSERT INTO urls VALUES($1) RETURNING num_id", url).Scan(&link.NumID)
+	err = db.GetDB().QueryRow("INSERT INTO urls VALUES(DEFAULT, $1) RETURNING num_id", url).Scan(&link.NumID)
 
 	return link, err
 }
