@@ -1,7 +1,7 @@
 {{ template "header.html" .}}
 
 <h1>
-  Success! Short URL: {{ .url }}! <a href="/">Back</a>
+  Success! Short URL: <a href="http://localhost:8080/{{ .url }}">localhost:8080/{{ .url }}</a>! <a href="/">Back</a>
 </h1>
 
 {{ template "footer.html" .}}
